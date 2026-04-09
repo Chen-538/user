@@ -11,7 +11,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="is-loading">
+  <div class="page-loader" aria-hidden="true">
+    <div class="page-loader-inner">
+      <p class="page-loader-label">Chen RuHong</p>
+      <p class="page-loader-title">Building Digital Momentum</p>
+      <div class="page-loader-bar">
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <canvas class="interaction-canvas" aria-hidden="true"></canvas>
   <div class="cursor-glow" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
   <div class="page-shell">
@@ -25,10 +36,10 @@
       </a>
 
       <nav class="site-nav" aria-label="主要導覽">
-        <a href="#projects">案例</a>
-        <a href="#services">價值</a>
-        <a href="#about">介紹</a>
-        <a href="#contact">聯絡</a>
+        <a href="#projects" data-nav-link>案例</a>
+        <a href="#services" data-nav-link>價值</a>
+        <a href="#about" data-nav-link>介紹</a>
+        <a href="#contact" data-nav-link>聯絡</a>
       </nav>
 
       <a class="header-cta" href="#contact" data-magnetic>預約聊聊</a>
@@ -39,8 +50,8 @@
         <div class="hero-copy">
           <p class="eyebrow">Chen RuHong / Web Experience / System Design</p>
           <p class="hero-role">品牌網站．會員體驗．ERP / CRM．流程整合</p>
-          <h1>陳儒紘</h1>
-          <p class="hero-statement">
+          <h1 data-split="chars">陳儒紘</h1>
+          <p class="hero-statement" data-split="lines">
             把網站做成品牌門面，也做成真正能運作的成長引擎。
           </p>
           <p class="hero-intro">
@@ -56,7 +67,7 @@
           <div class="hero-proof" aria-label="核心定位">
             <article class="proof-card">
               <p class="proof-label">公開案例</p>
-              <strong>3 個代表作品</strong>
+              <strong><span data-countup="3">3</span> 個代表作品</strong>
               <p>品牌網站、ERP 後台、CRM 模組平台</p>
             </article>
             <article class="proof-card">
@@ -72,9 +83,9 @@
           </div>
         </div>
 
-        <div class="hero-visual">
+        <div class="hero-visual" data-parallax-stage>
           <div class="photo-stack">
-            <article class="main-shot card-surface">
+            <article class="main-shot card-surface" data-parallax-layer data-depth="0.24">
               <img src="assets/images/portrait/river-side.jpg" alt="陳儒紘站在河岸風景中" loading="eager">
               <div class="shot-caption">
                 <p class="caption-label">Founder-Style Portfolio</p>
@@ -82,7 +93,7 @@
               </div>
             </article>
 
-            <article class="detail-card card-surface">
+            <article class="detail-card card-surface" data-parallax-layer data-depth="0.14">
               <p class="card-kicker">Positioning</p>
               <div class="metric">
                 <span class="metric-value">01</span>
@@ -95,11 +106,11 @@
               </div>
             </article>
 
-            <article class="secondary-shot card-surface">
+            <article class="secondary-shot card-surface" data-parallax-layer data-depth="0.2">
               <img src="assets/images/portrait/river-stance.jpg" alt="陳儒紘站在河邊遠望城市" loading="eager">
             </article>
 
-            <article class="floating-card card-surface">
+            <article class="floating-card card-surface" data-parallax-layer data-depth="0.3">
               <p class="floating-eyebrow">Selected Domains</p>
               <p class="floating-copy">shop.vegmanage.com / erp.vegmanage.com / contest.vegmanage.com</p>
             </article>
@@ -152,7 +163,7 @@
         </div>
 
         <div class="project-grid">
-          <article class="project-card card-surface">
+          <article class="project-card card-surface" data-project-card>
             <div class="project-media">
               <img src="assets/images/projects/shop-dashboard.png" alt="shop.vegmanage.com 網站截圖" loading="lazy">
             </div>
@@ -171,10 +182,13 @@
                 <li>會員中心與內容入口規劃</li>
                 <li>活動資訊與互動流程串接</li>
               </ul>
+              <div class="project-actions-row">
+                <button class="project-detail-btn" type="button" data-project-detail>案例詳情</button>
+              </div>
             </div>
           </article>
 
-          <article class="project-card card-surface">
+          <article class="project-card card-surface" data-project-card>
             <div class="project-media">
               <img src="assets/images/projects/erp-dashboard.png" alt="erp.vegmanage.com 後台截圖" loading="lazy">
             </div>
@@ -193,10 +207,13 @@
                 <li>財務與營運資料整合</li>
                 <li>適合每日使用的管理介面</li>
               </ul>
+              <div class="project-actions-row">
+                <button class="project-detail-btn" type="button" data-project-detail>案例詳情</button>
+              </div>
             </div>
           </article>
 
-          <article class="project-card card-surface">
+          <article class="project-card card-surface" data-project-card>
             <div class="project-media project-media-dashboard" aria-label="contest.vegmanage.com ERP Dashboard 視覺">
               <div class="dashboard-mock">
                 <aside class="dashboard-sidebar">
@@ -221,22 +238,22 @@
                   <div class="dashboard-stat-grid">
                     <article class="dashboard-stat-card">
                       <span>CRM</span>
-                      <strong>5</strong>
+                      <strong><span data-countup="5">5</span></strong>
                       <small>客戶主檔</small>
                     </article>
                     <article class="dashboard-stat-card">
                       <span>POS</span>
-                      <strong>2</strong>
+                      <strong><span data-countup="2">2</span></strong>
                       <small>訂單總數</small>
                     </article>
                     <article class="dashboard-stat-card">
                       <span>Booking</span>
-                      <strong>4</strong>
+                      <strong><span data-countup="4">4</span></strong>
                       <small>預約紀錄</small>
                     </article>
                     <article class="dashboard-stat-card">
                       <span>BI</span>
-                      <strong>NT$ 0</strong>
+                      <strong>NT$ <span data-countup="0">0</span></strong>
                       <small>今日營收</small>
                     </article>
                   </div>
@@ -279,6 +296,9 @@
                 <li>ERP 儀表板與營運資訊整合</li>
                 <li>偏企業級的系統感與可擴充性</li>
               </ul>
+              <div class="project-actions-row">
+                <button class="project-detail-btn" type="button" data-project-detail>案例詳情</button>
+              </div>
             </div>
           </article>
         </div>
@@ -404,6 +424,25 @@
     <footer class="site-footer section">
       <p>© 2026 Chen RuHong. Built for personal branding, system thinking, and polished digital experiences.</p>
     </footer>
+  </div>
+  <div class="project-modal" id="project-modal" aria-hidden="true">
+    <div class="project-modal-backdrop" data-modal-close></div>
+    <div class="project-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+      <button class="project-modal-close" type="button" aria-label="關閉案例詳情" data-modal-close>×</button>
+      <div class="project-modal-grid">
+        <div class="project-modal-media" data-modal-media></div>
+        <div class="project-modal-content">
+          <p class="project-tag" data-modal-tag></p>
+          <h3 id="project-modal-title" data-modal-title></h3>
+          <p class="project-modal-summary" data-modal-summary></p>
+          <ul class="project-modal-points" data-modal-points></ul>
+          <div class="project-modal-actions">
+            <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer" data-modal-link data-magnetic>前往網站</a>
+            <button class="btn btn-secondary" type="button" data-modal-close data-magnetic>返回頁面</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
